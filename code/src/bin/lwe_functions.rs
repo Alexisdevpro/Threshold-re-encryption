@@ -222,6 +222,21 @@ fn test_encryption_decryption() -> Result<(), String>{
     Ok(())
 }
 
+pub fn ecrypt_text(pub_key: &PublicKey, message: &str ) -> Vec<CyperText> {
+    println!("Message Aice {:?}", message);
+    let mut cyphers = Vec::new();
+    for byte in message.as_bytes() {
+        for i in (0..8).rev() {
+            let m = (byte >> i) & 1;
+            let delta_m = (Q as i64 / 2) * m as i64;
+            let cypher = encrypt(pub_key, delta_m);
+            cyphers.push(cypher);
+        }
+    }
+    cyphers
+
+}
+
 fn main() {
     //test_encryption_decryption();
     //test_encryption_decryption();
