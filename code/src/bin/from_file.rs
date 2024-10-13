@@ -1,8 +1,10 @@
 use nalgebra::{DMatrix, DVector};
-use std::fs::File;
-use std::io::{self, BufRead};
+use std::fs::{File, OpenOptions};
+use std::io::{self, BufRead, BufWriter};
 use std::path::Path;
 use crate::lwe_functions::{PublicKey, SecretKey};
+use std::fs::{self, create_dir_all, remove_dir_all, remove_file};
+use std::io::{ Read, Write};
 
 
 fn read_lines<P>(filename: P) -> io::Result<Vec<String>>
@@ -52,6 +54,23 @@ pub fn shared_from_file(file_path: &str) -> io::Result<(DVector<f64>, DVector<f6
     let vector_1 = DVector::from_vec(list1);
     let vector_2 = DVector::from_vec(list2);
     Ok((vector_1, vector_2))
+}
+
+pub fn append_vectors_to_files(file_vector_pairs: Vec<(&str, Vec<&Vec<f64>>)>) {
+    for (filename, vectors) in file_vector_pairs {
+        for data in vectors {
+            append_to_file(filename, data);
+        }
+    }
+}
+
+pub fn append_to_file(filename: &str, data: &Vec<f64>) {
+    let file = OpenOptions::new().append(true).create(true)
+        .open(filename)
+        .expect("pb ouverture ");
+
+    let mut writer = BufWriter::new(file);
+    write!(writer, "{:?}\n", data).expect("pb ecriture");
 }
 
 fn main() {
