@@ -1,7 +1,6 @@
 
 # Threshold-re-encryption 
 
-## Table of Contents
 
 - [Directory Structure](#directory-structure)
 - [How to Run the Project](#how-to-run-the-project)
