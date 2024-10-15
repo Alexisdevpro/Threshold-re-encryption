@@ -1,11 +1,18 @@
 
 # Threshold-re-encryption 
 
-Secure communications and data storage are major challenges in the challenges in the field of cryptography. Algorithms based on the "Learning With Errors" (LWE) problem and Shamir's secret sharing have have emerged as robust solutions for ensuring information confidentiality and integrity. In this paper, we explore an approach that combines these two cryptographic techniques to create a threshold-based re-encryption system. Our main objective is to answer the following problem: “A company needs to secure its vault password. It could use a standard method but what if the key holder is unavailable or dies? What happens if the key is compromised by a malicious hacker or if the key holder decides to betray the company, and uses his power over the safe to his own advantage?“ To guarantee the security of this password, n colleagues in the company have access to what we call a “share”, a part of the password. It takes t + 1 shares to reconstruct this password, so that a number of shares lower than t does not allow access the password.
+## Table of Contents
 
-In the first two sections of the paper, we provide the mathematical basis for the implementation. These include proofs of t-privacy, as well as the formula for reconstruction from shares. In the next two sections, we look at the 0 and 1-privacy cases for their implementation, including definitions of the Encryption and Decryption functions, and the affine form corresponding to the machine system.
-
-This project was created by Clemace Audibet, Gabrielle Lalou, and Alexis Mellier.
+- [Directory Structure](#directory-structure)
+- [How to Run the Project](#how-to-run-the-project)
+- [Setting Up Rust Environment](#setting-up-rust-environment)
+   - [1. Install Rust](#1-install-rust)
+   - [2. Clone the Repository](#2-clone-the-repository)
+   - [3. Build the Project](#3-build-the-project)
+   - [4. Run Tests (Optional)](#4-run-tests-optional)
+   - [5. Docker Support](#5-docker-support)
+- [Test](#test)
+- [Documentation](#documentation)
 
 ## Directory Structure
 
@@ -131,6 +138,36 @@ cargo test
 ### 5. Docker Support
 
 Coming soon... Next feature 
+
+## Test
+
+To test the system, the main test file is `test_system.rs`, located in the `code_projet/src/bin/` directory. Run it using:
+
+```bash
+cargo run --bin test_system.rs
+```
+
+1. **Generate System Keys and Shares**  
+   This step generates the public/secret keys and creates shares for two machines. Run the following function:
+   ```rust
+   generate_system_keys_and_shares();
+   ```
+   The keys will be saved in the `test_key/` directory, and the shares will be stored in `machine1.txt` and `machine2.txt`.
+
+
+2. **Generate Bob's Key Pair**  
+   This function generates a new key pair for Bob and saves it to `test_key/keypair_bob.txt`. If a previous key exists, it is replaced. Run:
+   ```rust
+   generate_bob_key();
+   ```
+
+3. **Encrypt a Plaintext File**  
+   To encrypt data from `plaintext/plaintext.txt`, use the system's public key:
+   ```rust
+   encrypt_plaintext_from_file();
+   ```
+   The result will be saved as ciphertext in `ciphertexts/ciphertexts.txt`.
+
 
 ## Documentation
 
