@@ -18,24 +18,7 @@
 ```
 .
 │   PROJ104_latex_24.06.pdf
-│   secret-sharing.pdf
 │   SUIVI.md
-│
-│
-├───code_intermédiaire
-│   │   Cargo.lock
-│   │   Cargo.toml
-│   │
-│   ├───src
-│   │   └───bin
-│   │           Gaussian.rs
-│   │           Gaussian.rs.old
-│   │           lwe.rs
-│   │           secret_share.rs
-│   │           testShare.rs
-│   │
-│   └───target
-│           .rustc_info.json
 │
 └───code_projet
     │   Cargo.lock
@@ -48,6 +31,7 @@
             │   from_file.rs
             │   lwe_functions.rs
             │   secret_sharing.rs
+            │   test_system.rs
             │
             ├───keys
             │       cleAlice.txt
@@ -56,16 +40,16 @@
             │       randomness
             │       r_secret_share
             │       skA_secret_share
-            │
-            ├───old
-            │       gaussian.rs
-            │       Gaussian.rs.old
-            │       lagrange_interpolation
-            │       lwe.rs
-            │       SSSS.rs
-            │       test.rs
-            │       test_gaussian.rs
-            │       test_regev.rs
+            ├───test_key
+            │       keypair_bob.txt
+            │       key_sys.txt
+            |       machine1.txt
+            |       machine2.txt
+            ├───ciphertexts
+            │       ciphertexts.txt
+            ├───plaintext
+            │       plaintext.txt
+            
 
 ```
 
