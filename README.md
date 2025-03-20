@@ -1,5 +1,7 @@
 
 # Threshold-re-encryption 
+In collaboration with Gabrielle Lalou and Clémence Audibert.
+
 
 - [Directory Structure](#directory-structure)
 - [How to Run the Project](#how-to-run-the-project)
@@ -11,6 +13,8 @@
    - [5. Docker Support](#5-docker-support)
 - [Running Tests](#running-tests)
 - [Documentation](#documentation)
+
+
 
 ## Directory Structure
 
